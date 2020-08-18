@@ -34,13 +34,13 @@ def test__returns_sum_of_numbers__when_arguments_are_numbers_separated_by_new_li
     assert add(numbers) == sum_of_numbers
 
 
-@pytest.mark.parametrize("numbers,expected", [
+@pytest.mark.parametrize("numbers,sum_of_numbers", [
     ("//;\n1;1", 2),
     ("//#\n3#4#2", 9),
     ("//abc\n45abc3abc8", 56)
 ])
-def test__when_declaring_different_delimiter__returns_expected_value(numbers: str, expected: int) -> None:
-    assert add(numbers) == expected
+def test__returns_sum_of_numbers__when_different_delimiter_is_declared(numbers: str, sum_of_numbers: int) -> None:
+    assert add(numbers) == sum_of_numbers
 
 
 @pytest.mark.parametrize("numbers,negative_numbers", [
