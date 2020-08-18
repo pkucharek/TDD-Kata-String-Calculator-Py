@@ -25,3 +25,12 @@ def test__when_given_numbers__returns_expected_value(numbers: str, expected: int
 ])
 def test__when_new_line_character__returns_expected_value(numbers: str, expected: int) -> None:
     assert add(numbers) == expected
+
+
+@pytest.mark.parametrize("numbers,expected", [
+    ("//;\n1;1", 2),
+    ("//#\n3#4#-2", 5),
+    ("//abc\n45abc3abc8", 56)
+])
+def test__when_declaring_different_delimiter__returns_expected_value(numbers: str, expected: int) -> None:
+    assert add(numbers) == expected
