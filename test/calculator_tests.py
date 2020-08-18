@@ -24,13 +24,14 @@ def test__returns_sum_of_numbers__when_arguments_are_numbers_separated_by_comma(
     assert add(numbers) == sum_of_numbers
 
 
-@pytest.mark.parametrize("numbers,expected", [
+@pytest.mark.parametrize("numbers,sum_of_numbers", [
     ("1\n0", 1),
     ("35\n0,25\n50,70\n2", 182),
     ("1\n2,3\n4", 10)
 ])
-def test__when_new_line_character__returns_expected_value(numbers: str, expected: int) -> None:
-    assert add(numbers) == expected
+def test__returns_sum_of_numbers__when_arguments_are_numbers_separated_by_new_line_character_or_comma(
+        numbers: str, sum_of_numbers: int) -> None:
+    assert add(numbers) == sum_of_numbers
 
 
 @pytest.mark.parametrize("numbers,expected", [
