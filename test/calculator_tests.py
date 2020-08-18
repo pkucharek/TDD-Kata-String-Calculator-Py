@@ -48,9 +48,8 @@ def test__returns_sum_of_numbers__when_different_delimiter_is_declared(numbers: 
     ("-2,-4,0,-5", "-2, -4, -5"),
     ("//abc\n-45abc3abc-8", "-45, -8")
 ])
-def test__when_passing_multiple_negative_arguments__throws_negatives_not_allowed_exception_and_prints_list_of_negative_numbers(
-        numbers, negative_numbers
-):
+def test__throws_negatives_not_allowed_exception_with_list_of_negative_numbers__when_passed_negative_numbers(
+        numbers, negative_numbers):
     with pytest.raises(NegativesNotAllowedException) as e:
         add(numbers)
     assert str(e.value) == f"Negatives not allowed: {negative_numbers}"
