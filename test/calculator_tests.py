@@ -12,15 +12,16 @@ def test__returns_argument__when_argument_is_digit():
     assert add("1") == 1
 
 
-@pytest.mark.parametrize("numbers,expected", [
+@pytest.mark.parametrize("numbers,sum_of_numbers", [
     ("1,2", 3),
     ("2,1", 3),
     ("35,12", 47),
     ("35,0", 35),
     ("35,0,25,50,70,2", 182),
 ])
-def test__when_given_numbers__returns_expected_value(numbers: str, expected: int) -> None:
-    assert add(numbers) == expected
+def test__returns_sum_of_numbers__when_arguments_are_numbers_separated_by_comma(
+        numbers: str, sum_of_numbers: int) -> None:
+    assert add(numbers) == sum_of_numbers
 
 
 @pytest.mark.parametrize("numbers,expected", [
