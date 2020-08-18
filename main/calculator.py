@@ -26,11 +26,16 @@ def are_numbers_empty(numbers: List[str]) -> bool:
 
 def sum_numbers(numbers: List[str]) -> int:
     summary: int = 0
+    negative_numbers: List[str] = []
     for str_number in numbers:
         int_number = int(str_number)
         if int_number < 0:
-            raise NegativesNotAllowedException("Negatives not allowed: -2, -4, -5")
+            negative_numbers.append(str_number)
         summary += int(str_number)
+    if negative_numbers:
+        negative_numbers_str = str(negative_numbers)
+        negative_numbers_str = re.sub("[\['\]]", "", negative_numbers_str)
+        raise NegativesNotAllowedException(negative_numbers_str)
     return summary
 
 
