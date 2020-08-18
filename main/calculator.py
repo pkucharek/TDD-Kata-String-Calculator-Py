@@ -14,11 +14,6 @@ def add(arguments: str) -> int:
         and numbers[0] == ""
     ):
         return 0
-    if (
-        len(numbers) == 1
-        and numbers[0] != ""
-    ):
-        return int(numbers[0])
     return sum_numbers(numbers)
 
 
