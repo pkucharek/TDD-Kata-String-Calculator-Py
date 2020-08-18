@@ -1,6 +1,8 @@
 import re
 from typing import List
 
+from main.negatives_not_allowed import NegativesNotAllowedException
+
 
 def add(arguments: str) -> int:
     numbers = prepare_numbers(arguments)
@@ -24,6 +26,18 @@ def are_numbers_empty(numbers: List[str]) -> bool:
 
 def sum_numbers(numbers: List[str]) -> int:
     summary: int = 0
-    for number in numbers:
-        summary += int(number)
+    negative_numbers: List[str] = []
+    for str_number in numbers:
+        int_number = int(str_number)
+        if int_number < 0:
+            negative_numbers.append(str_number)
+        summary += int_number
+    if negative_numbers:
+        raise_negatives_not_allowed_exception(negative_numbers)
     return summary
+
+
+def raise_negatives_not_allowed_exception(negative_numbers: List[str]):
+    negative_numbers_str: str = str(negative_numbers)
+    negative_numbers_str = re.sub("[\['\]]", "", negative_numbers_str)
+    raise NegativesNotAllowedException(negative_numbers_str)
