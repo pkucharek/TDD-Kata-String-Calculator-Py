@@ -4,10 +4,7 @@ from typing import List
 
 def add(arguments: str) -> int:
     numbers = prepare_numbers(arguments)
-    if (
-        len(numbers) == 1
-        and numbers[0] == ""
-    ):
+    if are_numbers_empty(numbers):
         return 0
     return sum_numbers(numbers)
 
@@ -19,6 +16,10 @@ def prepare_numbers(arguments: str) -> List[str]:
     else:
         separator: str = "[\\n,]"
     return re.split(separator, arguments)
+
+
+def are_numbers_empty(numbers: List[str]) -> bool:
+    return len(numbers) == 1 and numbers[0] == ""
 
 
 def sum_numbers(numbers: List[str]) -> int:
