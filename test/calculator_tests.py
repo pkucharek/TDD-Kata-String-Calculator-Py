@@ -35,11 +35,14 @@ def test__when_declaring_different_delimiter__returns_expected_value(numbers: st
     assert add(numbers) == expected
 
 
-@pytest.mark.parametrize("numbers", [
+negative_cases = [
     "//;\n-1;1",
-    "//#\n3#4#-2",
-    "//abc\n45abc-3abc8"
-])
+    "//#\n-3#-4#2",
+    "//abc\n-45abc-3abc8"
+]
+
+
+@pytest.mark.parametrize("numbers", negative_cases)
 def test__when_passing_negative_argument__throws_negatives_not_allowed_exception(numbers):
     with pytest.raises(NegativesNotAllowedException):
         add(numbers)
