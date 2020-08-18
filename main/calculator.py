@@ -33,7 +33,11 @@ def sum_numbers(numbers: List[str]) -> int:
             negative_numbers.append(str_number)
         summary += int(str_number)
     if negative_numbers:
-        negative_numbers_str = str(negative_numbers)
-        negative_numbers_str = re.sub("[\['\]]", "", negative_numbers_str)
-        raise NegativesNotAllowedException(negative_numbers_str)
+        raise_negatives_not_allowed_exception(negative_numbers)
     return summary
+
+
+def raise_negatives_not_allowed_exception(negative_numbers: List[str]):
+    negative_numbers_str: str = str(negative_numbers)
+    negative_numbers_str = re.sub("[\['\]]", "", negative_numbers_str)
+    raise NegativesNotAllowedException(negative_numbers_str)
