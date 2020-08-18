@@ -32,3 +32,7 @@ def sum_numbers(numbers: List[str]) -> int:
             raise NegativesNotAllowedException()
         summary += int(str_number)
     return summary
+
+
+def print_text():
+    print("text")

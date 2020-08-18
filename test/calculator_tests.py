@@ -1,6 +1,6 @@
 import pytest
 
-from main.calculator import add
+from main.calculator import add, print_text
 from main.negatives_not_allowed import NegativesNotAllowedException
 
 
@@ -46,3 +46,9 @@ negative_cases = [
 def test__when_passing_negative_argument__throws_negatives_not_allowed_exception(numbers):
     with pytest.raises(NegativesNotAllowedException):
         add(numbers)
+
+
+def test__print_text(capsys):
+    print_text()
+    captured = capsys.readouterr().out
+    assert captured == "text\n"
