@@ -4,11 +4,11 @@ from main.calculator import add
 from main.negatives_not_allowed import NegativesNotAllowedException
 
 
-def test__returns_0__when_input_is_empty():
+def test__returns_0__when_input_is_empty() -> None:
     assert add("") == 0
 
 
-def test__returns_argument__when_argument_is_digit():
+def test__returns_argument__when_argument_is_digit() -> None:
     assert add("1") == 1
 
 
@@ -49,7 +49,7 @@ def test__returns_sum_of_numbers__when_different_delimiter_is_declared(numbers: 
     ("//abc\n-45abc3abc-8", "-45, -8")
 ])
 def test__throws_negatives_not_allowed_exception_with_list_of_negative_numbers__when_passed_negative_numbers(
-        numbers, negative_numbers):
+        numbers: str, negative_numbers: str) -> None:
     with pytest.raises(NegativesNotAllowedException) as e:
         add(numbers)
     assert str(e.value) == f"Negatives not allowed: {negative_numbers}"
@@ -59,5 +59,5 @@ def test__throws_negatives_not_allowed_exception_with_list_of_negative_numbers__
     ("1,1001", 1),
     ("12000,1000,1", 1001),
 ])
-def test__ignores_arguments_greater_than_1000(numbers, sum_of_numbers):
+def test__ignores_arguments_greater_than_1000(numbers: str, sum_of_numbers: int) -> None:
     assert add(numbers) == sum_of_numbers
