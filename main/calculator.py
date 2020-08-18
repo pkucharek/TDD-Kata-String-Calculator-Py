@@ -37,7 +37,3 @@ def sum_numbers(numbers: List[str]) -> int:
         negative_numbers_str = re.sub("[\['\]]", "", negative_numbers_str)
         raise NegativesNotAllowedException(negative_numbers_str)
     return summary
-
-
-def print_text():
-    print("text")

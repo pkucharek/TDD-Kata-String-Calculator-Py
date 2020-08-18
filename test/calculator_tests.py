@@ -1,6 +1,6 @@
 import pytest
 
-from main.calculator import add, print_text
+from main.calculator import add
 from main.negatives_not_allowed import NegativesNotAllowedException
 
 
@@ -46,9 +46,3 @@ def test__when_passing_multiple_negative_arguments__throws_negatives_not_allowed
     with pytest.raises(NegativesNotAllowedException) as e:
         add(numbers)
     assert str(e.value) == f"Negatives not allowed: {negative_numbers}"
-
-
-def test__print_text(capsys):
-    print_text()
-    captured = capsys.readouterr().out
-    assert captured == "text\n"
