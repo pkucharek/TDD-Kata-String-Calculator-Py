@@ -13,12 +13,11 @@ def add(arguments: str) -> int:
         and numbers[0] != ""
     ):
         return int(numbers[0])
-    if len(numbers) == 2:
-        return sum_numbers(numbers)
-    return -1
+    return sum_numbers(numbers)
 
 
 def sum_numbers(numbers: List[str]) -> int:
-    a: int = int(numbers[0])
-    b: int = int(numbers[1])
-    return a + b
+    summary: int = 0
+    for number in numbers:
+        summary += int(number)
+    return summary
