@@ -1,5 +1,15 @@
+import pytest
+
 from main.calculator import add
 
 
-def test_when_empty_arguments_returns0():
-    assert add("") == 0
+@pytest.mark.parametrize("numbers,expected", [
+    ("", 0),
+    ("1", 1),
+    ("1,2", 3),
+    ("2,1", 3),
+    ("35,12", 47),
+    ("-35,0", -35),
+])
+def test__when_given_numbers__returns_expected_value(numbers, expected):
+    assert add(numbers) == expected
