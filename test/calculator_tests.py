@@ -46,3 +46,11 @@ def test__when_passing_multiple_negative_arguments__throws_negatives_not_allowed
     with pytest.raises(NegativesNotAllowedException) as e:
         add(numbers)
     assert str(e.value) == f"Negatives not allowed: {negative_numbers}"
+
+
+@pytest.mark.parametrize("numbers,expected", [
+    ("1,1001", 1),
+    ("12000,1000,1", 1001),
+])
+def test___arguments_greater_than_1000__should_be_ignored(numbers, expected):
+    assert add(numbers) == expected

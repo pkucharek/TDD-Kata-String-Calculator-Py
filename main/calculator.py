@@ -31,7 +31,8 @@ def sum_numbers(numbers: List[str]) -> int:
         int_number = int(str_number)
         if int_number < 0:
             negative_numbers.append(str_number)
-        summary += int_number
+        if int_number <= 1000:
+            summary += int_number
     if negative_numbers:
         raise_negatives_not_allowed_exception(negative_numbers)
     return summary
