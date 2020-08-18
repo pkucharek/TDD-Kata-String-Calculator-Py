@@ -8,8 +8,11 @@ def test__returns_0__when_input_is_empty():
     assert add("") == 0
 
 
+def test__returns_argument__when_argument_is_digit():
+    assert add("1") == 1
+
+
 @pytest.mark.parametrize("numbers,expected", [
-    ("1", 1),
     ("1,2", 3),
     ("2,1", 3),
     ("35,12", 47),
