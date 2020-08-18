@@ -1,5 +1,8 @@
-def add(arguments):
-    numbers = arguments.split(",")
+from typing import List
+
+
+def add(arguments: str) -> int:
+    numbers: List[str] = arguments.split(",")
     if (
         len(numbers) == 1
         and numbers[0] == ""
@@ -15,7 +18,7 @@ def add(arguments):
     return -1
 
 
-def sum_numbers(numbers):
-    a = int(numbers[0])
-    b = int(numbers[1])
+def sum_numbers(numbers: List[str]) -> int:
+    a: int = int(numbers[0])
+    b: int = int(numbers[1])
     return a + b
