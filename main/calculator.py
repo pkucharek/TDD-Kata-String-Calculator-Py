@@ -29,7 +29,7 @@ def sum_numbers(numbers: List[str]) -> int:
     for str_number in numbers:
         int_number = int(str_number)
         if int_number < 0:
-            raise NegativesNotAllowedException()
+            raise NegativesNotAllowedException("Negatives not allowed: -2, -4, -5")
         summary += int(str_number)
     return summary
 

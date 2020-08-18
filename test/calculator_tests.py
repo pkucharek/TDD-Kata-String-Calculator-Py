@@ -48,6 +48,12 @@ def test__when_passing_negative_argument__throws_negatives_not_allowed_exception
         add(numbers)
 
 
+def test__when_passing_multiple_negative_arguments__throws_negatives_not_allowed_exception_and_prints_list_of_negative_numbers():
+    with pytest.raises(NegativesNotAllowedException) as e:
+        add("-2,-4,0,-5")
+    assert str(e.value) == "Negatives not allowed: -2, -4, -5"
+
+
 def test__print_text(capsys):
     print_text()
     captured = capsys.readouterr().out
