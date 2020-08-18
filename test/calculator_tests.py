@@ -4,8 +4,11 @@ from main.calculator import add
 from main.negatives_not_allowed import NegativesNotAllowedException
 
 
+def test__returns_0__when_input_is_empty():
+    assert add("") == 0
+
+
 @pytest.mark.parametrize("numbers,expected", [
-    ("", 0),
     ("1", 1),
     ("1,2", 3),
     ("2,1", 3),
