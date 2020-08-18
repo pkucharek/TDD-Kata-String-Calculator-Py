@@ -1,0 +1,2 @@
+class NegativesNotAllowedException(Exception):
+    pass

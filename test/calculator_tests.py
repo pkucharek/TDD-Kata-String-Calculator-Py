@@ -1,6 +1,7 @@
 import pytest
 
 from main.calculator import add
+from main.negatives_not_allowed import NegativesNotAllowedException
 
 
 @pytest.mark.parametrize("numbers,expected", [
@@ -32,3 +33,13 @@ def test__when_new_line_character__returns_expected_value(numbers: str, expected
 ])
 def test__when_declaring_different_delimiter__returns_expected_value(numbers: str, expected: int) -> None:
     assert add(numbers) == expected
+
+
+@pytest.mark.parametrize("numbers", [
+    "//;\n-1;1",
+    "//#\n3#4#-2",
+    "//abc\n45abc-3abc8"
+])
+def test__when_passing_negative_argument__throws_negatives_not_allowed_exception(numbers):
+    with pytest.raises(NegativesNotAllowedException):
+        add(numbers)

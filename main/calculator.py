@@ -1,6 +1,8 @@
 import re
 from typing import List
 
+from main.negatives_not_allowed import NegativesNotAllowedException
+
 
 def add(arguments: str) -> int:
     numbers = prepare_numbers(arguments)
@@ -24,6 +26,9 @@ def are_numbers_empty(numbers: List[str]) -> bool:
 
 def sum_numbers(numbers: List[str]) -> int:
     summary: int = 0
-    for number in numbers:
-        summary += int(number)
+    for str_number in numbers:
+        int_number = int(str_number)
+        if int_number < 0:
+            raise NegativesNotAllowedException()
+        summary += int(str_number)
     return summary
