@@ -55,9 +55,9 @@ def test__throws_negatives_not_allowed_exception_with_list_of_negative_numbers__
     assert str(e.value) == f"Negatives not allowed: {negative_numbers}"
 
 
-@pytest.mark.parametrize("numbers,expected", [
+@pytest.mark.parametrize("numbers,sum_of_numbers", [
     ("1,1001", 1),
     ("12000,1000,1", 1001),
 ])
-def test___arguments_greater_than_1000__should_be_ignored(numbers, expected):
-    assert add(numbers) == expected
+def test__ignores_arguments_greater_than_1000(numbers, sum_of_numbers):
+    assert add(numbers) == sum_of_numbers
