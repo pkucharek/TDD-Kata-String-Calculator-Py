@@ -11,5 +11,5 @@ from main.calculator import add
     ("35,12", 47),
     ("-35,0", -35),
 ])
-def test__when_given_numbers__returns_expected_value(numbers, expected):
+def test__when_given_numbers__returns_expected_value(numbers: str, expected: int) -> None:
     assert add(numbers) == expected
