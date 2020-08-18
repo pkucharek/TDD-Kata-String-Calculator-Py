@@ -1,8 +1,9 @@
+import re
 from typing import List
 
 
 def add(arguments: str) -> int:
-    numbers: List[str] = arguments.split(",")
+    numbers: List[str] = re.split("[\\n,]", arguments)
     if (
         len(numbers) == 1
         and numbers[0] == ""
