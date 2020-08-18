@@ -29,13 +29,21 @@ def sum_numbers(numbers: List[str]) -> int:
     negative_numbers: List[str] = []
     for str_number in numbers:
         int_number: int = int(str_number)
-        if int_number < 0:
+        if is_negative(int_number):
             negative_numbers.append(str_number)
-        if int_number <= 1000:
+        if is_possible_to_add(int_number):
             summary += int_number
     if negative_numbers:
         raise_negatives_not_allowed_exception(negative_numbers)
     return summary
+
+
+def is_negative(number: int) -> bool:
+    return number < 0
+
+
+def is_possible_to_add(number: int) -> bool:
+    return number <= 1000
 
 
 def raise_negatives_not_allowed_exception(negative_numbers: List[str]) -> None:
